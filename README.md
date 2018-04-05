@@ -94,8 +94,9 @@ export default HandNote;
 
 ### APIs
 1. `clearSketch()` - Clears the view.
-2. `saveSketch()` - Initiates saving of sketch.
-3. `changeTool(toolId)` - Changes selected tool.
+2. `toolColor` - Set color for pen.
+3. `saveSketch()` - Initiates saving of sketch.
+4. `changeTool(toolId)` - Changes selected tool.
 	* Tool Id can be found using SketchView tooltype constants eg. `SketchView.constants.toolType.pen.id`
 #### Tool Types
 1. Pen - `SketchView.constants.toolType.pen`
