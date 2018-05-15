@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import {
@@ -7,8 +6,8 @@ import {
   UIManager,
   findNodeHandle,
   DeviceEventEmitter,
-  ColorPropType,
-} from 'react-native';
+  ColorPropType
+} from "react-native";
 
 class SketchView extends Component {
   constructor(props) {
@@ -18,9 +17,8 @@ class SketchView extends Component {
   }
 
   onChange(event) {
-    console.log('save event: ',event.nativeEvent);
+    console.log("save event: ", event.nativeEvent);
     if (event.nativeEvent.type === "onSaveSketch") {
-
       if (!this.props.onSaveSketch) {
         return;
       }
@@ -36,7 +34,7 @@ class SketchView extends Component {
   componentDidMount() {
     if (this.props.onSaveSketch) {
       let sub = DeviceEventEmitter.addListener(
-        'onSaveSketch',
+        "onSaveSketch",
         this.props.onSaveSketch
       );
       this.subscriptions.push(sub);
@@ -49,16 +47,14 @@ class SketchView extends Component {
   }
 
   render() {
-    return (
-      <RNSketchView {... this.props} onChange={this.onChange}/>
-    );
+    return <RNSketchView {...this.props} onChange={this.onChange} />;
   }
 
   clearSketch() {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this),
       UIManager.RNSketchView.Commands.clearSketch,
-      [],
+      []
     );
   }
 
@@ -66,7 +62,7 @@ class SketchView extends Component {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this),
       UIManager.RNSketchView.Commands.saveSketch,
-      [],
+      []
     );
   }
 
@@ -74,21 +70,20 @@ class SketchView extends Component {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this),
       UIManager.RNSketchView.Commands.changeTool,
-      [toolId],
+      [toolId]
     );
   }
-
 }
 
 SketchView.constants = {
   toolType: {
     pen: {
       id: 0,
-      name: 'Pen',
+      name: "Pen"
     },
     eraser: {
       id: 1,
-      name: 'Eraser'
+      name: "Eraser"
     }
   }
 };
@@ -100,7 +95,7 @@ SketchView.propTypes = {
   localSourceImagePath: PropTypes.string
 };
 
-let RNSketchView = requireNativeComponent('RNSketchView', SketchView, {
+let RNSketchView = requireNativeComponent("RNSketchView", SketchView, {
   nativeOnly: { onChange: true }
 });
 
