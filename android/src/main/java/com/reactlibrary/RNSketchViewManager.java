@@ -2,7 +2,6 @@
 package com.reactlibrary;
 
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.facebook.infer.annotation.Assertions;
@@ -22,6 +21,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class RNSketchViewManager extends SimpleViewManager<SketchViewContainer> {
@@ -47,17 +47,17 @@ public class RNSketchViewManager extends SimpleViewManager<SketchViewContainer> 
   }
 
   @ReactProp(name = PROPS_SELECTED_TOOL)
-  public void setSelectedTool(SketchViewContainer viewContainer, @NonNull Integer toolId) {
+  public void setSelectedTool(SketchViewContainer viewContainer, @Nonnull Integer toolId) {
     viewContainer.sketchView.setToolType(toolId);
   }
 
   @ReactProp(name = PROPS_TOOL_COLOR, defaultInt = Color.BLACK, customType = "Color")
-  public void setToolColor(SketchViewContainer viewContainer, @NonNull Integer color) {
+  public void setToolColor(SketchViewContainer viewContainer, @Nonnull Integer color) {
     viewContainer.sketchView.setToolColor(color);
   }
 
   @ReactProp(name = PROPS_LOCAL_SOURCE_IMAGE_PATH)
-  public void setLocalSourceImagePath(SketchViewContainer viewContainer, @NonNull String localSourceImagePath) {
+  public void setLocalSourceImagePath(SketchViewContainer viewContainer, @Nonnull String localSourceImagePath) {
     viewContainer.openSketchFile(localSourceImagePath);
   }
 
